@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-navbar {
+    width: 100%;
+    height: 50px;
+    background-color: rgba(128, 128, 128, 0.342);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.main-navbar img {
+    width: 40px;
+    transition: .5s linear;
+
+}
+
+.main-navbar img:hover {
+    scale: 1.1;
+    transition: .5s linear;
+}
+
+.main-navbar ul {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.main-navbar ul li {
+    list-style: none;
+
+}
+
+
+
+.main-navbar ul li a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding: 12px 25px;
+    transition: .5s linear;
+
+}
+
+.main-navbar ul li a:hover {
+    color: orangered;
+    transition: .5s linear;
+
+}
+
+
+
+.main-navbar button:hover {
+    transition: .5s linear;
+    background-color: orange;
+    border-radius: 12px;
+    color: black;
+
+
+}
+
+.nav-icons {
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    gap: 20px;
+}
+
+.nav-icons a {
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+}
+
+.main-container {
+    background: url('image/slide.webp');
+    background-size: cover;
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 100px;
+
+}
+
+.main-container img {
+    width: 440px;
+
+}
+
+.slide-content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+
+
+}
+
+.slide-content button {
+    padding: 10px 28px;
+    border: none;
+    border-radius: 10px;
+
+}
+
+.slide-content h1 {
+    color: white;
+    font-size: 35px;
+}
+
+.main-container span {
+    color: white;
+    font-size: 15px;
+}
+
+.pad-continer {
+    background-color: blue;
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+
+
+
+let formVar = document.getElementById("formID");
+let nameVar = document.getElementById("nameID");
+let numberVar = document.getElementById("numberID");
+let signUpBtn = document.querySelector("#btn");
+let cancel = document.querySelector("#cancel");
+
+
+signUpBtn.addEventListener("click", () => {
+    formVar.style.opacity = "1";
+    formVar.style.pointerEvents = "visible";
+    formVar.style.visibility = "visible"
+});
+
+cancel.addEventListener("click", () => {
+    formVar.style.opacity = "0";
+    formVar.style.pointerEvents = "none";
+    formVar.style.visibility = "hidden"
+});
+
+formVar.addEventListener("submit", function (event) {
+
+    let hasError = false;
+
+    //  name 
+    if (nameVar.value === "") {
+        nameVar.style.border = " 5px solid red"
+        hasError = true;
+    }
+
+    else {
+        nameVar.style.border = "none"
+    }
+
+
+    //  number
+
+    if (numberVar.value === "") {
+        numberVar.style.border = " 5px solid red"
+        hasError = "true"
+    }
+
+    else {
+        numberVar.style.border = "none"
+    }
+
+    if (hasError) {
+        event.preventDefault();
+        alert("Some Information is not filled, Please fill the Information")
+
+    }
+
+    else {
+        event.preventDefault();
+        formVar.style.pointerEvents = "none";
+        formVar.style.visibility = "hidden"
+        nameVar.value = "";
+        numberVar.value = "";
+        signUpBtn.style.display = "none"
+
+        alert("Done! You've submitted the form")
+    }
+
+})
